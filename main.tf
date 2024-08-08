@@ -46,21 +46,23 @@ subnet_id= module.blog_vpc.public_subnets[0]
   }
 }
 
-module "blog-alb" {
+module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name                  = "my-alb"
-  vpc_id                = "module.blog_vpc.vpc_id"
-  subnets               = module.blog_vpc.public_subnets
-  security_groups       = module.blog_sg.security_group_id
-  
-  http_tcp_listeners = [
-   {
-      port                  = 80
-      protocol              ="HTTP"
-      target_group_index    = 0
+  name              = "blog-alb"
+  vpc_id            = "module.blog_vpc.vpc.id"
+  subnets           = module.blog_vpc.public_subnets
+  security_groups   = module.blog_sg.security_group_id
+
     }
-  ]
+  }
+
+  listeners = {
+    ex-http-https-redirect = {
+      port     = 80
+      protocol = "HTTP"  
+    }
+  }
 
   target_groups = {
     ex-instance = {
@@ -73,7 +75,7 @@ module "blog-alb" {
   }
 
   tags = {
-    Environment = "dev"
+    Environment = "Development"
   }
 }
 
