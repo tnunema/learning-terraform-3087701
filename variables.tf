@@ -21,7 +21,7 @@ data "aws_vpc" "default"{
   default=true 
 }
 
-variable "Environment" {
+variable "environment" {
   description = "Development Environment"
 
   type = object({
