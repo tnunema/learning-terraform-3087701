@@ -76,7 +76,6 @@ module "alb" {
         }
     }
    }
-  }
 
   tags = {
     Environment = "Dev"
