@@ -67,12 +67,6 @@ module "blog_alb" {
       backend_protocol = "HTTP"
       backend_port     = 80
       target_type      = "instance"
-      targets = [
-        {
-          target_id = "i-0123456789abcdefg"
-          port = 80
-        },
-      ]
     }
   ]
 
