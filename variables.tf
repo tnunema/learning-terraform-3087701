@@ -3,13 +3,14 @@ variable "instance_type" {
   default     = "t3.nano"
 }
 
-variable "ami_filter"
-  description  = "Name fillter and owner for AMI"
+variable "ami_filter" {
+  description  = "Name filter and owner for AMI"
 
   type = object({
     name   = string
     owener = string
   })
+}
 
   default = {
     name  = "bitnami-tomcat-*-x86_64-hvm-ebs-nami"

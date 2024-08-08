@@ -12,6 +12,7 @@ data "aws_ami" "app_ami" {
   }
 
   owners = [var.ami_filter.owner]
+}
 
 data "aws_vpc" "default"{
   default=true 
