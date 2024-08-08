@@ -8,9 +8,8 @@ variable "ami_filter" {
 
   type = object({
     name   = string
-    owener = string
+    owner = string
   })
-}
 
   default = {
     name  = "bitnami-tomcat-*-x86_64-hvm-ebs-nami"
