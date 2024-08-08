@@ -53,7 +53,7 @@ module "alb" {
 
   vpc_id            = module.vlog_vpc.vpc.id
   subnets           = module.blog_vpc.public_subnets
-  security_group_id = module.blog_sg.security_group_id
+  security_groups = [module.blog_sg.security_group_id]
 
   listeners = {
     http_tcp_listeners = {
